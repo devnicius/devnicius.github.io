@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+		<meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1.0, user-scalable=0">
+        <title>Vini - HTML5</title>
+		<style type="text/css">
+                        body { 
+                        -webkit-animation: colorchange 60s infinite; 
+    animation: colorchange 11s infinite;
+}
+@-webkit-keyframes colorchange {
+    0%  {background: #ffcccc;}
+    25%  {background: #ff9999;}
+    50%  {background: #ff6666;}
+    75%  {background: #ff3333;}
+    100% {background: #ff0000;}
+}
+@keyframes colorchange {
+     0%  {background: #ffcccc;}
+    25%  {background: #ff9999;}
+    50%  {background: #ff6666;}
+    75%  {background: #ff3333;}
+    100% {background: #ff0000;}
+}   
+
+			#canvas {
+			  border: 6px solid #FFFF00;
+			  display: flex;
+			width: 100%;
+			height: 500px;
+			}
+		</style>
+    </head>   
+	<body onload="inicializar()">
+		<div style="color: black; position: absolute; width: 200px; height: 200px">
+			<h1 style="text-align: center;">faça 10 pontos</h1>
+			</div>
+		<canvas style="border: 1px solid black;" id="canvas" width="1000px" height="500px">
+			Navegador não suporta HTML5
+		</canvas>
+
+		<script type="text/javascript">
+		
+			var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador, bolaDiametro, bolaPosX, bolaPosY, velocidadeBola, pontosJogador, colisao;
+		
+			function inicializar()
+			{
+				barraAltura = 15;
+				barraLargura = 130;
+				
+                                
+                                
+				pontosJogador = 0;
+				jogadorPosicaoX = (canvas.width - barraLargura) / 2;
+				velocidadeJogador = 30;
+				
+				canvas = document.getElementById("canvas");
+				context = canvas.getContext("2d");				
+				
+                bolaDiametro = 10;
+                bolaPosX = canvas.width / 2;
+                bolaPosY = -10;
+				velocidadeBola = 7;
+				colisao = false;
+				
+				document.addEventListener('keydown', keyDown);
+				
+				setInterval(gameLoop, 30);
+			}
+			
+			function keyDown(e) 
+			{
+				if(e.keyCode == 37)
+				{
+					if(jogadorPosicaoX > 0)
+					{
+						jogadorPosicaoX -= velocidadeJogador;
+					}
+				}
+				
+				if(e.keyCode == 39)
+				{
+					if(jogadorPosicaoX < (canvas.width - barraLargura))
+					{
+						jogadorPosicaoX += velocidadeJogador;
+					}
+				}
+			}
+
+			function esquerda() 
+			{
+					if(jogadorPosicaoX > 0)
+					{
+						jogadorPosicaoX -= (velocidadeJogador*2);
+					}
+				
+			}
+			
+			function direita() 
+			{
+					if(jogadorPosicaoX > 0)
+					{
+						jogadorPosicaoX += (velocidadeJogador*2);
+					}
+			}
+
+			function gameLoop()
+			{
+				//Limpa Tela
+				context.clearRect(0, 0, canvas.width, canvas.height);
+				
+				// Bola
+				context.beginPath();
+                context.arc(bolaPosX, bolaPosY, bolaDiametro, 0, Math.PI * 4, true);
+                context.fill();
+				
+				if(bolaPosY <= canvas.height)
+				{
+					bolaPosY += velocidadeBola;
+				}
+				else
+				{
+					bolaPosX = Math.random() * 800;
+					bolaPosY = -10;
+					colisao = false;
+				}
+				
+				// Checar Colisão
+				if((bolaPosX > jogadorPosicaoX && bolaPosX < jogadorPosicaoX + barraLargura) && bolaPosY >= canvas.height - barraAltura && colisao == false)
+				{
+					pontosJogador++;
+					colisao = true;
+				}
+				
+				// Escreve placar
+                context.font = "32pt Tahoma";
+				context.fillText(pontosJogador, canvas.width - 70, 50);
+				
+				if(pontosJogador == 10) {
+					alert("Ganhou!!")
+					pontosJogador = 0
+				} 
+				// Jogador
+				context.fillRect(jogadorPosicaoX, canvas.height - barraAltura, barraLargura, barraAltura);
+			}
+			
+		</script>
+		<div style="text-align: center;">
+					 <h3>©Vinícius </h3>
+					 
+					 <input type="image" src="Left.png" style="width: 10%; height: 10%; margin-right: 5em;" onclick="esquerda()"></input>
+					 <input type="image" src="right.png" style="width: 10%; height: 10%; margin-left: 5em;" onclick="direita()"></input>
+	</div>
+	</body>
+</html>
