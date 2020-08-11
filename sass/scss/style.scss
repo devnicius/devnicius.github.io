@@ -3,11 +3,25 @@ $color2: #60BFBF;
 $color3: #8C4B7E;
 $color4: #F8BB44;
 $color5: #F24B4B;
-$background: #000000;
+$color6: #000000;
+
+
+
+@keyframes colors {
+  0% {
+    background: #001F3F;
+  }
+  50% {
+    background: #FF4136;
+  }
+  100% {
+    background: #001F3F;
+  }
+}
 
 
 body{
-  background-color: $background;
+  background-color: $color6;
   overflow: hidden;
 }
 
@@ -63,7 +77,7 @@ body{
     @include easeOut;
     
     &:nth-child(1) {
-      left: 0;
+      left: 0;    
     }
     
     &:nth-child(2) {
@@ -87,7 +101,8 @@ body{
         background: $color1;
         transform: translate3d(-100%, 0, 0);
         animation-name: strip1;
-        animation-delay: 1s;
+        animation-delay: 0.1s;
+        
       }
     }
     
@@ -207,10 +222,10 @@ body{
     will-change: transform, opacity;
     position: absolute;
     z-index: 5;
-    top: 50%;
+    top: 45%;
     left: 50%;
     width: 70%;
-    transform: translate(-50%,-50%) scale(0.5);
+    transform: translate(300%,-0%) scale(2);
     opacity: 0;
     @include easeOut;
   }
@@ -219,10 +234,10 @@ body{
     will-change: transform, opacity;
     position: absolute;
     z-index: 5;
-    bottom: 75%;
+    top: 45%;
     left: 50%;
     width: 70%;
-    transform: translate(-50%,-50%) scale(0);
+    transform: translate(300%,-0%) scale(2);
     opacity: 0;
     @include easeOut;
   }
@@ -231,10 +246,10 @@ body{
     will-change: transform, opacity;
     position: absolute;
     z-index: 5;
-    top: 35%;
+    top: 45%;
     left: 50%;
     width: 70%;
-    transform: translate(-50%,-50%) scale(0);
+    transform: translate(300%,-0%) scale(2);
     opacity: 0;
     @include easeOut;
   }
@@ -285,7 +300,7 @@ body{
   display: block;
   margin: 0;
   position: relative;
-  z-index: 2;
+  z-index: 0;
   width: 100%;
   font-size: 3.5vw;
   color: white;
@@ -403,6 +418,10 @@ h2 {
 
 p {
   margin: 0 0 16px;
+}
+
+#github {
+  font-size: large;
 }
 
 @media only screen and (max-width: 800px) {
