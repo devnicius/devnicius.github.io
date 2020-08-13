@@ -45,12 +45,13 @@ body{
 #footer {
   background-color: white;
   opacity: 0.5;
-  height: 10vh;
+  height: 8vh;
+  margin-top: 0.3em;
 }
 
 .shortIcon {
-  width: 6vh;
-  margin: 20px;
+  width: 5vh;
+  margin: 15px;
   z-index: 100;
 
 }
@@ -425,10 +426,14 @@ p {
   font-size: large;
 }
 
+.twitter {
+  margin-top: 1em;
+}
+
 @media only screen and (max-width: 800px) {
 
   #footer {
-    height: 7vh;
+    height: 5vh;
   }
 
   .shortIcon {  
