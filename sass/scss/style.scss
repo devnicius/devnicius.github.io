@@ -329,7 +329,7 @@ body{
 .strip__close {
   position: absolute;
   right: 3vw;
-  top: 300em;
+  top: 3000em;
   opacity: 0;
   z-index: 10;
   @include easeOut;
@@ -433,7 +433,6 @@ p {
 
   .shortIcon {  
     margin: 25px;
-    width: 8vh;
   }
 
   .strip__title2 {
