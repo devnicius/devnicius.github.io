@@ -144,7 +144,7 @@ body{
     }
     
     @include break {
-      .strip__inner-text-contact {
+      .strip__inner-text-new {
         width: 0px;
       }
 
@@ -243,7 +243,7 @@ body{
     @include easeOut;
   }
 
-  .strip__inner-text-contact {
+  .strip__inner-text-new {
     will-change: transform, opacity;
     position: absolute;
     z-index: 5;
@@ -285,7 +285,7 @@ body{
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
-    .strip__inner-text-contact {
+    .strip__inner-text-new {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
@@ -409,7 +409,7 @@ h1, h2 {
 }
 
 .fa {
-  font-size: 75px;
+  font-size: 3em;
   color: white;
 }
 
@@ -422,8 +422,8 @@ p {
   margin: 0 0 16px;
 }
 
-#github {
-  font-size: large;
+#icon {
+  font-size: xx-large;
 }
 
 .twitter {
